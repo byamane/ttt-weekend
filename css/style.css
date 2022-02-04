@@ -24,3 +24,11 @@ div {
   text-align: center;
   vertical-align: middle;
 }
+
+#reset {
+  border: 3px solid black;
+  font-size: 2vmin;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 2px;
+}

@@ -10,6 +10,7 @@ let board = []
 
 const squareEls = document.querySelectorAll('div')
 const gameStatus = document.getElementById("message")
+const resetBtn = document.getElementById("reset")
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -17,6 +18,8 @@ const gameStatus = document.getElementById("message")
 squareEls.forEach(function(square){
 	square.addEventListener("click", handleClick)
 })
+
+resetBtn.addEventListener("click", init)
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -38,13 +41,11 @@ function render(){
 	} else {
 		squareEls[index].textContent = null
 	}})
-// 3.3.2) Render a message reflecting the currrent game state:
-  // 3.3.2.1) If winner has a value other than null (game still in progress), render whose turn it is.
+
 	if(winner === null){
 		gameStatus.textContent = `It's ${turn === 1 ? "Player 1's turn" : "Player 2's turn"}`
 	}
-// 3.3.2.2) If winner is equal to 'T' (tie), render a tie message.
-  // 3.3.2.3) Otherwise, render a congratulatory message to which player has won. 
+
 	else {
 		function playerName() {
 			let output;
