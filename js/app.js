@@ -4,18 +4,11 @@
 
 /*---------------------------- Variables (state) ----------------------------*/
 let win, lose, tie, turn, winner
+console.log(winner)
+let board = []
 /*------------------------ Cached Element References ------------------------*/
 
-const sq1 = document.getElementById("sq0")
-const sq2 = document.getElementById("sq1")
-const sq3 = document.getElementById("sq2")
-const sq4 = document.getElementById("sq3")
-const sq5 = document.getElementById("sq4")
-const sq6 = document.getElementById("sq5")
-const sq7 = document.getElementById("sq6")
-const sq8 = document.getElementById("sq7")
-const sq9 = document.getElementById("sq8")
-
+const squareEls = document.querySelectorAll('div')
 const gameStatus = document.getElementById("message")
 
 
@@ -24,21 +17,48 @@ const gameStatus = document.getElementById("message")
 
 
 /*-------------------------------- Functions --------------------------------*/
-console.log(board)
-let board = [sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9]
 
 init()
 
 function init(){
-  board.map(element){
-    element = null
-  }
-  
-  winner = null
-
-
-
+	board = [null, null, null, null, null, null, null, null, null]
+  turn = 1
+	winner = null
+	render()
 }
+
+function render(){
+	board.forEach(function(square, index){
+	if (square === 1) {
+		squareEls[index].textContent = "X"
+	}	else if (square === -1) {
+		squareEls[index].textContent = "O"
+	} else {
+		squareEls[index].textContent = null
+	}
+// 3.3.2) Render a message reflecting the currrent game state:
+    // 3.3.2.1) If winner has a value other than null (game still in progress), render whose turn it is.
+    // 3.3.2.2) If winner is equal to 'T' (tie), render a tie message.
+	    // 3.3.2.3) Otherwise, render a congratulatory message to which player has won.
+	if(winner === null){
+		gameStatus.textContent = `It's ${turn === 1 ? "Player 1's turn" : "Player 2's turn"}`
+	} 
+	else {
+		function playerName(){
+		if(turn === 1){
+			return "Player 1"
+		} else if (turn === -1){
+			return "Player 2"
+		}
+	}
+		gameStatus.textContent = `${winner === 'T' ? "It's a tie!" : "Congrats! " + playerName() + " won!"}`
+	}
+	
+	})
+}
+
+
+
 
 
 
