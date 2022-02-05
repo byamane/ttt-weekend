@@ -25,6 +25,7 @@ resetBtn.addEventListener("click", init)
 init()
 
 function init(){
+	// squareEls.className = "start"
 	board = [null, null, null, null, null, null, null, null, null]
   turn = 1
 	winner = null
@@ -36,14 +37,17 @@ function render(){
 	board.forEach((square, index) => {
 	if (square === 1) {
 		squareEls[index].textContent = "X"
+		squareEls[index].className = "X"
 	}	else if (square === -1) {
 		squareEls[index].textContent = "O"
+		squareEls[index].className = "O"
 	} else {
 		squareEls[index].textContent = null
+		squareEls[index].className = "blank"
 	}})
 
 	if(winner === null){
-		gameStatus.textContent = `It's ${turn === 1 ? "Player 1's turn" : "Player 2's turn"}`
+		gameStatus.textContent = `It's ${turn === 1 ? "Player 1's turn (X)" : "Player 2's turn (O)"}`
 	}
 
 	else {
@@ -76,16 +80,9 @@ function getWinner() {
 	winningCombos.forEach(combo => {
   	if (Math.abs(board[combo[0]] + board[combo[1]] + board[combo[2]]) === 3){
 			winner = turn
+			confetti.start(2000)
 		} else if(!board.includes(null)){
 			winner = 'T'
 		}
 	})
 }
-
-// 6) Handle a player clicking the replay button:
-
-	// 6.1) Add a replay button to the HTML document
-
-	// 6.2) Store the new replay button element
-
-	// 6.3) Do steps 4.1 (initialize the state variables) and 4.2 (render).

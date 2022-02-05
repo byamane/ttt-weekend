@@ -1,8 +1,8 @@
 body {
-    background-color: gray;
-	/* Use a system font, if none are available use an available sans-sarif   font */
+  background-color: black;
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
 		Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  color: white;
 	margin: 0;
   height: 50vh;
   display: flex;
@@ -18,17 +18,63 @@ section.board {
   grid-gap: 0vmin;
 }
 
-div {
-  border: 3px solid black;
-  font-size: 8vmin;
-  text-align: center;
-  vertical-align: middle;
-}
-
 #reset {
   border: 3px solid black;
   font-size: 2vmin;
   text-align: center;
   vertical-align: middle;
   margin-top: 2px;
+}
+
+.X {
+  border: 3px solid red;
+  background-color: rgb(255, 104, 104);
+  font-family: 'Ubuntu', sans-serif;
+  color: #fff;
+  animation: red 1.5s ease-in-out infinite alternate;
+  font-weight:700;
+  font-size: 8vmin;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+.O {
+  border: 3px solid blue;
+  background-color: rgb(90, 71, 255);
+  font-family: 'Ubuntu', sans-serif;
+  color: white;
+  animation: blue 1.5s ease-in-out infinite alternate;
+  font-weight:700;
+  font-size: 8vmin;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+.blank {
+  border: 3px solid black;
+  background-color: white;
+  font-size: 8vmin;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  }
+
+@keyframes red{
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+  }
+}
+ 
+@keyframes blue{
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+  }
 }
