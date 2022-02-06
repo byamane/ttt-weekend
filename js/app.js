@@ -29,6 +29,7 @@ function init(){
 	board = [null, null, null, null, null, null, null, null, null]
   turn = 1
 	winner = null
+	gameStatus.className = "blankMsg"
 	render()
 }
 
@@ -54,9 +55,11 @@ function render(){
 		function playerName() {
 			let output;
 			if (turn === -1) {
-				output = 'Player 1';
+				output = 'Player 1 (X)';
+				gameStatus.className = "xMsg"
 			} else if (turn === 1) {
-				output = 'Player 2';
+				output = 'Player 2 (O)';
+				gameStatus.className = "oMsg"
 			}
 			return output;
 		}
