@@ -34,7 +34,6 @@ function init(){
 }
 
 function render(){
-	getWinner()
 	board.forEach((square, index) => {
 	if (square === 1) {
 		squareEls[index].textContent = "X"
@@ -76,6 +75,8 @@ function handleClick(evt){
 		board[parseInt(evt.target.id.replace("sq",''))] = turn
 	}
 	turn *= -1
+	getWinner()
+	getTie()
 	render()
 }
 
@@ -84,8 +85,15 @@ function getWinner() {
   	if (Math.abs(board[combo[0]] + board[combo[1]] + board[combo[2]]) === 3){
 			winner = turn
 			confetti.start(2000)
-		} else if(!board.includes(null)){
-			winner = 'T'
 		}
 	})
+}
+
+function getTie(){
+  let tie = board.every(function(square){
+    return square !== null
+  })
+  if (tie === true && winner === null){
+    winner = 'T'
+  } tie
 }
